@@ -1,0 +1,66 @@
+Project Overview
+
+Spam detection is the process of identifying and filtering out unwanted or unsolicited messages, typically in the form of emails or text messages. These messages are often sent by spammers or malicious actors with the intent of promoting a product, service, or website, or to trick the recipient into providing personal information or downloading malware. Spam detection typically involves the use of machine learning algorithms that analyze the content of messages to identify patterns or characteristics commonly associated with spam. These algorithms are trained on large datasets of labeled examples of spam and legitimate messages, allowing them to distinguish between the two with high accuracy. Effective spam detection is crucial for both individuals and organizations, as it helps prevent unwanted messages from cluttering inboxes, reduces the risk of phishing attacks, and improves overall cybersecurity.
+
+This repository contains a Python script that uses various machine learning models to classify spam messages from ham messages. The model is trained on a popular dataset of spam emails, and multiple machine learning models are used for classification.
+
+
+- NumPy
+- Pandas
+- Matplotlib
+- Seaborn
+- Scikit-learn
+
+You can install all the above-mentioned libraries by executing the following command:
+```
+pip install -r requirements.txt
+```
+
+ Getting Started
+Follow these steps to set up the project locally.
+
+Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/KalyanMurapaka45/Spam-Email-Detection.git
+   ```
+
+2. Install the required libraries:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Open and execute the Jupyter Notebook file. After execution, you will get a `.pkl` file for project deployment.
+
+### Dataset Description
+The Email-Spam dataset, publicly available on Kaggle, comprises 5,572 emails, each having two features: Category and Message.
+
+- **Message:** Contains the actual text of the email.
+- **Category:** Distinguishes between spam and ham emails.
+
+### Data Pre-processing
+The following steps are performed during data pre-processing:
+1. Drop the `Unnamed: 2`, `Unnamed: 3`, and `Unnamed: 4` columns.
+2. Convert the `Category` column to binary values.
+3. Split the dataset into training and testing sets using `train_test_split()` from `sklearn.model_selection`.
+4. Transform the emails into numerical features using `TfidfVectorizer()` from `sklearn.feature_extraction.text`.
+
+Initially, the 'Unnamed: 2', 'Unnamed: 3', and 'Unnamed: 4' columns are dropped from the DataFrame. The code checks for null values using the `isnull()` method. The `Category` column is then converted to numerical values (0 for spam and 1 for ham). The number of values in each category is printed using the `value_counts()` method. The `X` and `Y` variables are created, where `X` stores the `Message` column, and `Y` stores the `Category` column. The data is split into training and testing sets using the `train_test_split()` method from scikit-learn. The `TfidfVectorizer` is used to extract features from the text data with `min_df` set to 1, `stop_words` set to 'english', and `lowercase` set to True. Feature extraction is performed on both the training and testing data using the `fit_transform()` and `transform()` methods. Finally, the `Y_train` and `Y_test` variables are converted to integers.
+
+### Model Training and Evaluation
+After splitting the dataset into training and testing parts, the machine learning models are trained on the training data using the `fit()` method. The trained models are tested on the testing data using the `predict()` method. To evaluate the performance of the models, evaluation metrics such as accuracy, precision, recall, and F1-score are used.
+
+The following Machine Learning Algorithms are used:
+- Logistic Regression
+- K Nearest Neighbors
+- Decision Trees
+- Random Forest
+- Stacking Model
+
+### Model Deployment
+The file `Spam Classification Deployment.py` contains the complete code for deployment using Streamlit, an open-source Python library that allows you to create interactive web applications for machine learning and data science projects.
+
+To run the `Spam Classification Deployment.py` file, execute the following command in your command prompt:
+```bash
+python Spam Classification Deployment.py
+```
